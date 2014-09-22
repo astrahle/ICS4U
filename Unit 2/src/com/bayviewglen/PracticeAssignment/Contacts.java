@@ -17,5 +17,17 @@ public class Contacts {
 			phone = phoneNum;
 		}
 	
+		public String getLastName(){
+			return lname;
+		}
+		
+		public String getFirstName(){
+			return fname;
+		}
+		
+		public String getPhoneNumber(){
+			return phone;
+		}
+		
 
 }
