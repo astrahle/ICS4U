@@ -10,6 +10,12 @@ public class Contacts {
 			fname = null;
 			phone = null;
 		}
+		
+		public Contacts(String last, String first, String phoneNum){
+			lname = last;
+			fname = first;
+			phone = phoneNum;
+		}
 	
 
 }
