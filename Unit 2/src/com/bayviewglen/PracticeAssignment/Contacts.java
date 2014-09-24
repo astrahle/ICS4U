@@ -1,9 +1,9 @@
 package com.bayviewglen.PracticeAssignment;
 
 public class Contacts {
-	private static String lname;
-	private static String fname;
-	private static String phone;
+	private String lname;
+	private String fname;
+	private String phone;
 	
 		public Contacts(){
 			lname = null;
@@ -17,32 +17,32 @@ public class Contacts {
 			phone = phoneNum;
 		}
 	
-		public static String getLastName(){
+		public String getLastName(){
 			return lname;
 		}
 		
-		public static String getFirstName(){
+		public String getFirstName(){
 			return fname;
 		}
 		
-		public static String getPhoneNumber(){
+		public String getPhoneNumber(){
 			return phone;
 		}
 		
-		public static void setLastName(String tempLast){
+		public void setLastName(String tempLast){
 			lname = tempLast;
 		}
 		
-		public static void setFirstName(String tempFirst){
+		public void setFirstName(String tempFirst){
 			fname = tempFirst;
 		}
 		
-		public static void setPhoneNumber(String tempPhone){
+		public void setPhoneNumber(String tempPhone){
 			phone = tempPhone;
 		}
 		
-		public String toString(){
-			return fname + " " + lname + " " + phone;
+		public void showContact(){
+			System.out.println(fname + ", " + lname + "," + phone);
 		}
 		
 

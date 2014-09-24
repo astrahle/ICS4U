@@ -9,134 +9,52 @@ import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class AddressBook extends Contacts {
+public class AddressBook {
 	
-	
-		private static ArrayList<Contacts> list = new ArrayList<Contacts>();
-		static Scanner scanner = new Scanner(System.in);
-		static boolean done = true;
-
+		private static ArrayList<Contacts> list;
 		
-			
-		public static void main() throws Exception{
 
-			
-	
-			int choice;
+		// method to add a contact to the list
+		public static void addContact(Contacts toAdd){
+			list.add(toAdd);
+		}
 
-			System.out.println("Welcome to the Address Book editing software.");
-			System.out.println("What would you like to do? (Enter Number)");
-			System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
-			System.out.println("1) Add Contact");
-			System.out.println("2) Remove Contact");
-			System.out.println("3) Search For Contact");
-			System.out.println("4) Display All Contacts");
-			System.out.println("5) Exit");
-			choice = scanner.nextInt();
-
-			if (choice == 1){
-				Contacts contact = new Contacts();
-				addContact(contact);
+		public void searchByName(String name){
+			for (Contacts c: list){
+				if(c.getFirstName().equals(name) || c.getLastName().equals(name))
+					c.showContact();
 			}
-
-			if (choice ==2){
-				int indexForRemove;
-
-				System.out.println("Who would you like to remove?");
-				//Contacts c = scanner.next();  *Can't get this to work.*
-
-				//indexForRemove = searchContact(c);
-			}
-
-			if (choice == 3){
-				String toSearch;
-				System.out.println("Who would you like to search for?");
-				toSearch = scanner.nextLine();
-
-				for (int x=0; x<list.size(); x++){
-					if (toSearch.equals(list.get(x))){
-						System.out.println(list.get(x));
-					}
-					else 
-						System.out.println("The desired person does not exist");
+			System.out.println("Sorry no one with the name: " + name + " exists.");
+		}
+		
+		public void searchByNumber(String phoneNum){
+			for (Contacts c:list){
+				if(c.getFirstName().equals(phoneNum)){
+					c.showContact();
 				}
 			}
-			
-			if (choice == 4){
-				System.out.println("-----------------------");
-				for (int x=0; x<list.size(); x++){
-					System.out.println("|" + list.get(x));
-					System.out.println("-----------------------");
-				}
-			}
-			
-			if (choice == 5){
-				System.exit(0);
-			}
-
+			System.out.println("Sorry no one wih the phone number: " + phoneNum + "exists.");
 		}
-
-		// void is a place holder until i set the return.
-		public static void addContact(Contacts c) throws Exception{
-			String firstName;
-			String lastName;
-			String phoneNumber;
-			String combined;
-
-			// to get the first name
-			System.out.println("Please enter first name: ");
-			firstName = scanner.nextLine();
-
-			// to get the last name
-			System.out.println("Please enter last name: ");
-			lastName = scanner.nextLine();
-
-			// to get the phone numbAer
-			System.out.println("Please enter phone number: ");
-			phoneNumber = scanner.nextLine();
-
-			// to make one string that we will put into the array list
-			//combined = firstName + " " + lastName+ " " + phoneNumber;
-
-			setFirstName(firstName);
-			setLastName(lastName);
-			setPhoneNumber(phoneNumber);
-
-			list.add(c);
-
-			editFile();
-
-
-
-
-			// REMOVE!!! It is just used for quick testing
-			//System.out.println(getFirstName());
-			//System.out.println(getLastName());
-			//System.out.println(getPhoneNumber());
-
-		}
-
-		public static void editFile() throws Exception{
-			FileWriter writer = new FileWriter("Address Books/Address Book One.txt");
-
-			final int INFORMATION = 3; //amount of info (First Name, Last Name, Phone)
-			for(int x = 0; x <= INFORMATION; x++){
-				writer.write(list.toString());
-			}
-		}
-
-		public void removeContact(Contacts c){
-			list.remove(c);
-		}
-
-		public static int searchContact(Contacts c){
+		
+		public static void removeContact (Contacts toRemove){
 			for (int x = 0; x < list.size(); x++){
-				if(list.get(x).equals(c)){
-					return x;
+				if (list.get(x).equals(toRemove)){
+					list.remove(x);
+					break;
 				}
 			}
-			return -1;
+			System.out.println("Sorry we could not delete that contact since they don't exist.");
 		}
+		
+		public void displayAllContacts(){
+			for (int x = 0; x < list.size(); x++){
+				System.out.println((x+1)+ ",");
+				list.get(x).showContact();
+				System.out.println("--------------------------------");
+			}
+		}
+		
+		
 		}
 
 
