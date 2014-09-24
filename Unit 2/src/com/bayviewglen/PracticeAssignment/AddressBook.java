@@ -11,11 +11,11 @@ import java.util.Scanner;
 
 public class AddressBook extends Contacts {
 
-	private ArrayList<Contacts> list;
+	private ArrayList<Contacts> list = new ArrayList<Contacts>();
 	Scanner scanner = new Scanner(System.in);
 
 	// void is a place holder until i set the return.
-	public void addContact(){
+	public void addContact(Contacts c){
 		String firstName;
 		String lastName;
 		String phoneNumber;
@@ -40,6 +40,15 @@ public class AddressBook extends Contacts {
 		setLastName(lastName);
 		setPhoneNumber(phoneNumber);
 		
+		list.add(c);
+		
+		try {
+			editFile();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		
 		
 		
 		// REMOVE!!! It is just used for quick testing
@@ -53,6 +62,19 @@ public class AddressBook extends Contacts {
 		Scanner fileScanner = new Scanner (new File("Address Books/Address Book One.txt"));
 		PrintWriter writer = new PrintWriter ("Address Books/Address Book One.txt", "UTF-8");
 		writer.println(getFirstName() + " " + getLastName() + " " + getPhoneNumber());
+	}
+	
+	public void removeContact(Contacts c){
+		list.remove(c);
+	}
+	
+	public int searchContact(Contacts c){
+		for (int x = 0; x < list.size(); x++){
+			if(list.get(x).equals(c)){
+				return x;
+			}
+		}
+		return -1;
 	}
 
 }

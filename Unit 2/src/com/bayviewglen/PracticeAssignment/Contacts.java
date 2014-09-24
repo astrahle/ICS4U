@@ -40,11 +40,9 @@ public class Contacts {
 		public void setPhoneNumber(String tempPhone){
 			phone = tempPhone;
 		}
-	
-		public String getCombinedInfo (){
-			String combined;
-			combined = fname + " " + lname + "" + phone;
-			return combined;
+		
+		public String toString(){
+			return fname + " " + lname + " " + phone;
 		}
 		
 
