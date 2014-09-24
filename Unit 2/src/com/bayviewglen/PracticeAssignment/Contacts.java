@@ -1,9 +1,9 @@
 package com.bayviewglen.PracticeAssignment;
 
 public class Contacts {
-	private String lname;
-	private String fname;
-	private String phone;
+	private static String lname;
+	private static String fname;
+	private static String phone;
 	
 		public Contacts(){
 			lname = null;
@@ -17,15 +17,15 @@ public class Contacts {
 			phone = phoneNum;
 		}
 	
-		public String getLastName(){
+		public static String getLastName(){
 			return lname;
 		}
 		
-		public String getFirstName(){
+		public static String getFirstName(){
 			return fname;
 		}
 		
-		public String getPhoneNumber(){
+		public static String getPhoneNumber(){
 			return phone;
 		}
 		
@@ -41,5 +41,11 @@ public class Contacts {
 			phone = tempPhone;
 		}
 	
+		public String getCombinedInfo (){
+			String combined;
+			combined = fname + " " + lname + "" + phone;
+			return combined;
+		}
+		
 
 }

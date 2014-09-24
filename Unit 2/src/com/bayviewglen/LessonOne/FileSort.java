@@ -10,7 +10,7 @@ public class FileSort {
 	public static void main(String[] args) throws FileNotFoundException {
 		String[] allWords = new String[1000];
 		int wordCount = 0;
-		Scanner input = new Scanner(new File ("data.txt"));
+		Scanner input = new Scanner(new File ("inputs/data.txt"));
 
 
 		while (input.hasNext()){
