@@ -11,11 +11,30 @@ import java.util.Scanner;
 
 public class AddressBook extends Contacts {
 
-	private ArrayList<Contacts> list = new ArrayList<Contacts>();
-	Scanner scanner = new Scanner(System.in);
+	private static ArrayList<Contacts> list = new ArrayList<Contacts>();
+	static Scanner scanner = new Scanner(System.in);
+	
+	public static void main() throws Exception{
+		
+		int choice;
+		
+		System.out.println("Welcome to the Address Book editing software.");
+		System.out.println("What would you like to do? (Enter Number)");
+		System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+		System.out.println("1) Add Contact");
+		System.out.println("2) Remove Contact");
+		System.out.println("3) Search For Contact");
+		System.out.println("4) Display All Contacts");
+		choice = scanner.nextInt();
+		
+		if (choice == 1){
+			Contacts contact = new Contacts();
+			addContact(contact);
+		}
+	}
 
 	// void is a place holder until i set the return.
-	public void addContact(Contacts c){
+	public static void addContact(Contacts c) throws Exception{
 		String firstName;
 		String lastName;
 		String phoneNumber;
@@ -42,11 +61,7 @@ public class AddressBook extends Contacts {
 		
 		list.add(c);
 		
-		try {
-			editFile();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+		editFile();
 		
 		
 		
@@ -59,9 +74,12 @@ public class AddressBook extends Contacts {
 	}
 	
 	public static void editFile() throws Exception{
-		Scanner fileScanner = new Scanner (new File("Address Books/Address Book One.txt"));
-		PrintWriter writer = new PrintWriter ("Address Books/Address Book One.txt", "UTF-8");
-		writer.println(getFirstName() + " " + getLastName() + " " + getPhoneNumber());
+		FileWriter writer = new FileWriter("Address Books/Address Book One.txt");
+		
+		final int INFORMATION = 3; //amount of info (First Name, Last Name, Phone)
+		for(int x = 0; x <= INFORMATION; x++){
+			writer.write(list.toString());
+		}
 	}
 	
 	public void removeContact(Contacts c){

@@ -29,15 +29,15 @@ public class Contacts {
 			return phone;
 		}
 		
-		public void setLastName(String tempLast){
+		public static void setLastName(String tempLast){
 			lname = tempLast;
 		}
 		
-		public void setFirstName(String tempFirst){
+		public static void setFirstName(String tempFirst){
 			fname = tempFirst;
 		}
 		
-		public void setPhoneNumber(String tempPhone){
+		public static void setPhoneNumber(String tempPhone){
 			phone = tempPhone;
 		}
 		
