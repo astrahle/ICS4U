@@ -10,6 +10,8 @@ public class AddressBookDriver {
 	public static void main(String[] args) throws IOException {
 		boolean done = false;
 		
+		Contacts contact = new Contacts();
+		
 		while (!done){
 			
 			Scanner scanner = new Scanner(System.in);
@@ -27,12 +29,13 @@ public class AddressBookDriver {
 			choice = scanner.nextInt();
 			
 			if (choice == 1){
-				String firstName;
+				String tempFirst = null;
 				
 				System.out.println(" ");
 				System.out.println("Please enter their first name: ");
+				tempFirst = scanner.nextLine();
 				
-				//setFirstName(firstName);  cant get this to work
+				contact.setFirstName(tempFirst);  
 			}
 			
 			if (choice == 2){
@@ -42,11 +45,11 @@ public class AddressBookDriver {
 				System.out.println("Please enter their name or phone number");
 				nameOrPhone = scanner.nextLine();
 				
-				//removeContact(nameOrPhone); Still can't figure this out
+				//AddressBook.removeContact(); 
 			}
 			
 			if (choice == 3){
-				String contact;
+				String contactToDispaly;
 				
 				System.out.println(" ");
 				System.out.println("Who would you like to display?");

@@ -15,8 +15,16 @@ public class QueenDriver {
 		sizeOfBoard = scanner.nextInt();
 		
 		String[][] board = new String[sizeOfBoard][sizeOfBoard];
+		String[] queenPositions = new String[sizeOfBoard];
 		
-		for (int x = 0; x <= sizeOfBoard; x++){
+		boolean done = false;
+		
+		while (!done){
+			new Queens(0, 0);
+			board[0][0] = "Q";
+			queenPositions[0] = "0, 0";
+			
+			
 			
 		}
 		

@@ -44,6 +44,6 @@ public class Contacts {
 	public void showContact(){
 		System.out.println(fname + ", " + lname + "," + phone);
 	}
-
+	
 
 }
