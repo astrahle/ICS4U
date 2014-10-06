@@ -7,7 +7,9 @@ import java.util.Scanner;
 
 public class AddressBookDriver {
 
-	public static void main(String[] args) throws IOException {
+	static AddressBook selected;
+	
+	public static void editAddressBook (AddressBook book) throws IOException {
 		boolean done = false;
 		
 		Contacts contact = new Contacts();
@@ -22,7 +24,7 @@ public class AddressBookDriver {
 			System.out.println("-----------------------------------");
 			System.out.println("What would you like to do? (Enter numerical value)");
 			System.out.println("1) Add Contact");
-			System.out.println("2) Delete Contact");
+			System.out.println("2) Delete Contact By Name");
 			System.out.println("3) Show Contact");
 			System.out.println("4) Display All Contacts");
 			System.out.println("5) Exit");
@@ -39,13 +41,13 @@ public class AddressBookDriver {
 			}
 			
 			if (choice == 2){
-				String nameOrPhone;
+				String nameToGet;
 				
 				System.out.println(" ");
 				System.out.println("Please enter their name or phone number");
-				nameOrPhone = scanner.nextLine();
+				nameToGet = scanner.nextLine();
 				
-				//AddressBook.removeContact(); 
+				 
 			}
 			
 			if (choice == 3){
@@ -62,10 +64,7 @@ public class AddressBookDriver {
 				}
 			
 			if (choice == 4){
-			//	for (int x = 0; x < list.size; x++){
-			//		displayContact(x);
-			//		System.out.println(" ");
-			//	}
+			
 				
 			}
 			
