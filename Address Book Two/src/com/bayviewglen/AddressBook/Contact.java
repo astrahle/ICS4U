@@ -43,7 +43,7 @@ public class Contact {
 	}
 
 	public void showContact(){
-		System.out.println(fname + ", " + lname + "," + phone);
+		System.out.println(phone + " " + fname + " " + lname);
 	}
 	
 
