@@ -1,6 +1,7 @@
 package com.bayviewglen.AddressBook;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.PrintWriter;
 import java.util.ArrayList;
@@ -72,11 +73,18 @@ public class AddressBook {
 		}
 
 	}
+	
+	
+
 	// i think this works... famous last words
 	public void displayAllContacts(){
 		for (String key : listMap.keySet()){
 			System.out.println(key + listMap.get(key));
 		}
+	}
+	
+	public Map<String, Contact> getMap(){
+		return listMap;
 	}
 
 
