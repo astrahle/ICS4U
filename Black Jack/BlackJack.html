@@ -1,0 +1,705 @@
+<html>
+
+
+<head>
+    <title>Black Jack</title>
+    <link type="text/css" rel="stylesheet" href="stylesheet.css" />
+    <link rel="stylesheet" href="jquery-ui.min.css">
+    <script src="external/jquery/jquery.js"></script>
+    <script src="jquery-ui.min.js"></script>
+    <script>
+    /*Game and Card Variables*/
+    var done = false;
+    var cardNumbers = [];
+    var cardValues = [];
+    var cardUrls = [];
+    var dealerCardUrls = [];
+    var canBet = true;
+
+    /*Player Variables*/
+    var playerWallet = 500;
+    var playerBet = 0;
+    var cardsSuitDrawn = [];
+    var cardsNameDrawn = [];
+    var cardsNumberDrawn = [];
+
+    var numberSuitsDrawn = 0;
+    var numberCardsDrawn = 0;
+
+    /*Dealer Variables*/
+    var dealerSuitDrawn = [];
+    var dealerNameDrawn = [];
+    var dealerCardsNumberDrawn = [];
+
+    var numberDealerSuitsDrawn = 0;
+    var numberDealerCardsDrawn = 0;
+
+
+    for (var x = 0; x > 13; x++) {
+        cardNumbers[x] = x + 1;
+    }
+
+    /*cardValues[0] = null;
+    cardValues[1] = 1;
+    cardValues[2] = 2;
+    cardValues[3] = 3;
+    cardValues[4] = 4;
+    cardValues[5] = 5;
+    cardValues[6] = 6;
+    cardValues[7] = 7;
+    cardValues[8] = 8;
+    cardValues[9] = 9;
+    cardValues[10] = 10;
+    cardValues[11] = 10;
+    cardValues[12] = 10;
+    cardValues[13] = 10;*/
+
+
+
+    function runner() {
+        while (!done) {
+
+            var playerChoice;
+
+            document.getElementById('Console').innerHTML = "Welcome to black jack!!";
+
+            var delay = 2000;
+            setTimeout(function() {
+                document.getElementById('Console').innerHTMl = "How much would you like to bet?";
+            }, delay);
+
+        }
+    }
+
+    /*Returns the suit of the card*/
+    function getCardSuit() {
+
+        var suit = 1;
+        var suitName = "Error Getting Suit";
+
+        suit = Math.floor((Math.random() * 4) + 1);
+
+        if (suit == 1) {
+            suitName = "Spade";
+        }
+
+        if (suit == 2) {
+            suitName = "Heart";
+        }
+
+        if (suit == 3) {
+            suitName = "Club";
+        }
+
+        if (suit == 4) {
+            suitName = "Diamond";
+        }
+        cardsSuitDrawn[numberSuitsDrawn] = suitName;
+        /*return suitName*/
+    }
+
+
+
+
+    /*Returns the cards number*/
+    function getCardNumber() {
+        var cardNumber = 0;
+        var cardName;
+
+        cardNumber = Math.floor((Math.random() * 13) + 1);
+        cardsNumberDrawn[numberCardsDrawn] = cardNumber;
+
+
+
+        if (cardNumber == 1) {
+            cardName = "Ace";
+        }
+
+        if (cardNumber == 2) {
+            cardName = "Two";
+        }
+
+        if (cardNumber == 3) {
+            cardName = "Three";
+        }
+
+        if (cardNumber == 4) {
+            cardName = "Four";
+        }
+
+        if (cardNumber == 5) {
+            cardName = "Five";
+        }
+
+        if (cardNumber == 6) {
+            cardName = "Six";
+        }
+
+        if (cardNumber == 7) {
+            cardName = "Seven";
+        }
+
+        if (cardNumber == 8) {
+            cardName = "Eight";
+        }
+
+        if (cardNumber == 9) {
+            cardName = "Nine";
+        }
+
+        if (cardNumber == 10) {
+            cardName = "Ten";
+        }
+
+        if (cardNumber == 11) {
+            cardName = "Jack";
+        }
+
+        if (cardNumber == 12) {
+            cardName = "Queen";
+        }
+
+        if (cardNumber == 13) {
+            cardName = "King";
+        }
+
+        /*return cardName;*/
+        cardsNameDrawn[numberCardsDrawn] = cardName;
+
+    }
+
+    /*Returns the dealer cards number*/
+    function getDealerCardNumber() {
+        var cardNumber = 0;
+        var cardName;
+
+        cardNumber = Math.floor((Math.random() * 13) + 1);
+        dealerCardsNumberDrawn[numberDealerCardsDrawn] = cardNumber;
+
+        if (cardNumber == 1) {
+            cardName = "Ace";
+        }
+
+        if (cardNumber == 2) {
+            cardName = "Two";
+        }
+
+        if (cardNumber == 3) {
+            cardName = "Three";
+        }
+
+        if (cardNumber == 4) {
+            cardName = "Four";
+        }
+
+        if (cardNumber == 5) {
+            cardName = "Five";
+        }
+
+        if (cardNumber == 6) {
+            cardName = "Six";
+        }
+
+        if (cardNumber == 7) {
+            cardName = "Seven";
+        }
+
+        if (cardNumber == 8) {
+            cardName = "Eight";
+        }
+
+        if (cardNumber == 9) {
+            cardName = "Nine";
+        }
+
+        if (cardNumber == 10) {
+            cardName = "Ten";
+        }
+
+        if (cardNumber == 11) {
+            cardName = "Jack";
+        }
+
+        if (cardNumber == 12) {
+            cardName = "Queen";
+        }
+
+        if (cardNumber == 13) {
+            cardName = "King";
+        }
+
+        /*return cardName;*/
+        dealerNameDrawn[numberDealerCardsDrawn] = cardName;
+    }
+
+    /*Returns the dealer suit of the card*/
+    function getDealerCardSuit() {
+
+        var suit = 1;
+        var suitName = "Error Getting Suit";
+
+        suit = Math.floor((Math.random() * 4) + 1);
+
+        if (suit == 1) {
+            suitName = "Spade";
+        }
+
+        if (suit == 2) {
+            suitName = "Heart";
+        }
+
+        if (suit == 3) {
+            suitName = "Club";
+        }
+
+        if (suit == 4) {
+            suitName = "Diamond";
+        }
+
+        dealerSuitDrawn[numberDealerSuitsDrawn] = suitName;
+        /*return suitName*/
+    }
+
+    function calculatePlayerTotal() {
+        var playerTotal = 0;
+        var hasAce = false;
+
+        for (var x = 0; x < numberCardsDrawn; x++) {
+            if (cardsNumberDrawn[x] == 1) {
+                hasAce = true;
+            }
+
+            if (cardsNumberDrawn[x] != 1) {
+
+            }
+        }
+
+        for (var x = 0; x < numberCardsDrawn; x++) {
+            if (cardsNumberDrawn[x] > 10) {
+                playerTotal += 10;
+            }
+
+            if (cardsNumberDrawn[x] <= 10) {
+                playerTotal += cardsNumberDrawn[x];
+            }
+        }
+        if ((playerTotal + 10 <= 21) && (hasAce)) {
+            playerTotal += 10;
+        }
+
+        return playerTotal;
+    }
+
+    function calculateDealerTotal() {
+        var dealerTotal = 0;
+        var hasAce = false;
+
+        for (var x = 0; x < numberDealerCardsDrawn; x++) {
+            if (dealerCardsNumberDrawn[x] == 1) {
+                hasAce = true;
+            }
+
+            if (dealerCardsNumberDrawn[x] != 1) {
+
+            }
+        }
+
+        for (var x = 0; x < numberDealerCardsDrawn; x++) {
+            if (dealerCardsNumberDrawn[x] > 10) {
+                dealerTotal += 10;
+            }
+
+            if (dealerCardsNumberDrawn[x] <= 10) {
+                dealerTotal += dealerCardsNumberDrawn[x];
+            }
+        }
+        if ((dealerTotal + 10 <= 21) && (hasAce)) {
+            dealerTotal += 10;
+        }
+
+        return dealerTotal;
+    }
+
+    function addBet1() {
+        if ((playerBet + 1) > playerWallet) {
+
+        }
+
+        if ((playerBet + 1) <= playerWallet) {
+            playerBet += 1;
+        }
+
+        document.getElementById("betDisplay").value = playerBet;
+        document.getElementById("walletDisplay").value = playerWallet - playerBet;
+    }
+
+    function addBet10() {
+        if ((playerBet + 10) > playerWallet) {
+
+        }
+
+        if ((playerBet + 10) <= playerWallet) {
+            playerBet += 10;
+        }
+
+        document.getElementById("betDisplay").value = playerBet;
+        document.getElementById("walletDisplay").value = playerWallet - playerBet;
+    }
+
+    function addBet25() {
+        if ((playerBet + 25) > playerWallet) {
+
+        }
+
+        if ((playerBet + 25) <= playerWallet) {
+            playerBet += 25;
+        }
+
+        document.getElementById("betDisplay").value = playerBet;
+        document.getElementById("walletDisplay").value = playerWallet - playerBet;
+    }
+
+    function addBet50() {
+        if (canBet == false) {
+            document.getElementById("consoleDisplay").value = "Can't bet because game is playing."
+        }
+
+        if (((playerBet + 50) > playerWallet) && canBet == true) {
+
+        }
+
+        if (((playerBet + 50) <= playerWallet) && canBet == true) {
+            playerBet += 50;
+        }
+
+        document.getElementById("betDisplay").value = playerBet;
+        document.getElementById("walletDisplay").value = playerWallet - playerBet;
+    }
+
+    function addBet100() {
+        if (canBet == false) {
+            document.getElementById("consoleDisplay").value = "Can't bet because game is playing."
+        }
+
+        if (((playerBet + 100) > playerWallet) && canBet == true) {
+
+        }
+
+        if (((playerBet + 100) <= playerWallet) && canBet == true) {
+            playerBet += 100;
+        }
+
+        document.getElementById("betDisplay").value = playerBet;
+        document.getElementById("walletDisplay").value = playerWallet - playerBet;
+    }
+
+    function lose() {
+        var tempWallet = playerWallet - playerBet;
+
+        playerWallet = tempWallet;
+
+        playerBet = 0;
+        document.getElementById("betDisplay").value = playerBet;
+        document.getElementById("walletDisplay").value = playerWallet;
+
+        var delay = 2000;
+
+        setTimeout(function() {
+            clearAll();
+        }, delay);
+
+
+        for (var x = 0; x < numberCardsDrawn; x++) {
+            cardsSuitDrawn[x] = null;
+            cardsNameDrawn[x] = null;
+            cardsNumberDrawn[x] = null;
+            cardUrls[x] = null;
+        }
+
+        numberSuitsDrawn = 0;
+        numberCardsDrawn = 0;
+
+        // to erase old cards
+        for (var x = 0; x < numberDealerCardsDrawn; x++) {
+            dealerSuitDrawn[x] = null;
+            dealerNameDrawn[x] = null;
+            dealerCardsNumberDrawn[x] = null;
+            dealerCardUrls[x] = null;
+        }
+
+        numberDealerSuitsDrawn = 0;
+        numberDealerCardsDrawn = 0;
+        canBet = true;
+
+
+        var delay = 2000;
+
+        setTimeout(function() {
+            //to get new cards for dealer and player
+            for (var x = 0; x < 2; x++) {
+                getCardNumber();
+                getCardSuit();
+                numberCardsDrawn++;
+                numberSuitsDrawn++;
+                displayPlayerCard();
+            }
+
+            for (var x = 0; x < 2; x++) {
+                getDealerCardNumber();
+                getDealerCardSuit();
+                numberDealerSuitsDrawn++;
+                numberDealerCardsDrawn++;
+                displayDealerCard();
+            }
+
+            document.getElementById("consoleDisplay").value = "Welcome to Black Jack";
+        }, delay);
+
+
+    }
+
+    function win() {
+        var tempWallet = playerWallet + playerBet;
+
+        playerWallet = tempWallet;
+
+        playerBet = 0;
+        document.getElementById("betDisplay").value = playerBet;
+        document.getElementById("walletDisplay").value = playerWallet;
+
+        var delay = 2000;
+
+        setTimeout(function() {
+            clearAll();
+        }, delay);
+
+        for (var x = 0; x < numberCardsDrawn; x++) {
+            cardsSuitDrawn[x] = null;
+            cardsNameDrawn[x] = null;
+            cardsNumberDrawn[x] = null;
+            cardUrls[x] = null;
+        }
+
+        numberSuitsDrawn = 0;
+        numberCardsDrawn = 0;
+
+        // to erase old cards
+        for (var x = 0; x < numberDealerCardsDrawn; x++) {
+            dealerSuitDrawn[x] = null;
+            dealerNameDrawn[x] = null;
+            dealerCardsNumberDrawn[x] = null;
+            dealerCardUrls[x] = null;
+        }
+
+        numberDealerSuitsDrawn = 0;
+        numberDealerCardsDrawn = 0;
+        canBet = true;
+
+
+
+        var delay = 2000;
+
+        setTimeout(function() {
+            //to get new cards for dealer and player
+            for (var x = 0; x < 2; x++) {
+                getCardNumber();
+                getCardSuit();
+                numberCardsDrawn++;
+                numberSuitsDrawn++;
+                displayPlayerCard();
+            }
+
+            for (var x = 0; x < 2; x++) {
+                getDealerCardNumber();
+                getDealerCardSuit();
+                numberDealerSuitsDrawn++;
+                numberDealerCardsDrawn++;
+                displayDealerCard();
+            }
+            document.getElementById("consoleDisplay").value = "Welcome to Black Jack";
+        }, delay);
+    }
+
+    function hit() {
+        canBet = false;
+        getCardSuit();
+        getCardNumber();
+        numberCardsDrawn++;
+        numberSuitsDrawn++;
+        displayPlayerCard();
+
+        var currentTotal = calculatePlayerTotal();
+
+        if (currentTotal > 21) {
+            lose();
+            document.getElementById("consoleDisplay").value = "BUST!! You now have $" + playerWallet + " in your wallet.";
+        }
+
+        if (currentTotal <= 21) {
+            document.getElementById("consoleDisplay").value = "Hit!!";
+        }
+
+    }
+
+    function stand() {
+        canBet = false;
+        var tempPlayerTotal = calculatePlayerTotal();
+        var dealerBust = false;
+
+        if (calculateDealerTotal() < 17) {
+            while (calculateDealerTotal() < 17) {
+                getDealerCardNumber();
+                getDealerCardSuit();
+                numberDealerSuitsDrawn++;
+                numberDealerCardsDrawn++;
+                displayDealerCard();
+            }
+        }
+
+        tempDealerTotal = calculateDealerTotal();
+
+        if (tempDealerTotal > 21) {
+            dealerBust = true;
+        }
+
+        if ((tempPlayerTotal <= tempDealerTotal) && (dealerBust == false)) {
+            lose();
+            document.getElementById("consoleDisplay").value = "You lose. You now have $" + playerWallet + " in your wallet.";
+
+        }
+
+        if ((tempPlayerTotal > tempDealerTotal) || (dealerBust == true)) {
+            win();
+            document.getElementById("consoleDisplay").value = "You win!! You now have $" + playerWallet + " in your wallet.";
+
+        }
+
+
+
+    }
+
+    function doubleDown() {
+        canBet = false;
+        if ((playerBet * 2) > playerWallet) {
+            document.getElementById("consoleDisplay").value = "Sorry you don't have enough to double down.";
+        }
+
+        if ((playerBet * 2) <= playerWallet) {
+            playerBet += playerBet;
+            numberCardsDrawn++;
+            numberSuitsDrawn++;
+            hit();
+            stand();
+        }
+    }
+
+    function clearAll() {
+        $("#playerCards").empty();
+        $("#dealerCards").empty();
+    }
+
+    function displayPlayerCard() {
+        var tempUrl = " ";
+        var tempSuit = " ";
+        var tempNumber = " ";
+        var fullUrl = " ";
+
+        tempNumber = cardsNameDrawn[numberCardsDrawn - 1];
+        tempSuit = cardsSuitDrawn[numberCardsDrawn - 1];
+
+        tempUrl = tempNumber + tempSuit;
+        cardUrls[numberCardsDrawn - 1] = "'<img src=\"deck/" + tempUrl + ".png\"/>'";
+        fullUrl = "<img src=\"deck/" + tempUrl + ".png\"/>";
+        $("#playerCards").append(fullUrl);
+
+    }
+
+    function displayDealerCard() {
+        var tempUrl = " ";
+        var tempSuit = " ";
+        var tempNumber = " ";
+        var fullUrl = " ";
+
+        tempNumber = dealerNameDrawn[numberDealerCardsDrawn - 1];
+        tempSuit = dealerSuitDrawn[numberDealerCardsDrawn - 1];
+
+        tempUrl = tempNumber + tempSuit;
+        dealerCardUrls[numberDealerCardsDrawn - 1] = "'<img src=\"deck/" + tempUrl + ".png\"/>'";
+        fullUrl = "<img src=\"deck/" + tempUrl + ".png\"/>";
+        $("#dealerCards").append(fullUrl);
+
+        //'<img id="theImg" src="theImg.png" />';
+    }
+
+    function start() {
+        /*To make sure there are cards to start*/
+        for (var x = 0; x < 2; x++) {
+            getCardSuit();
+            getCardNumber();
+            numberCardsDrawn++;
+            numberSuitsDrawn++;
+            displayPlayerCard();
+        }
+
+        for (var x = 0; x < 2; x++) {
+            getDealerCardSuit();
+            getDealerCardNumber();
+            numberDealerSuitsDrawn++;
+            numberDealerCardsDrawn++;
+            displayDealerCard();
+        }
+    }
+
+
+    start();
+    </script>
+
+</head>
+
+<body>
+    <div id="banner">
+        <img class="bannerImg" src="images/BlackJackBanner.png" alt="BlackJack" />
+    </div>
+
+    <div id="dealer">
+        <img class="dealerImg" src="images/DealerText.png" alt="Dealer" />
+    </div>
+
+    <div id="dealerCards">
+       
+
+    </div>
+
+    <div id="player">
+        <img class="playerImg" src="images/PlayerText.png" alt="Player" />
+    </div>
+
+    <div id="playerCards">
+
+    </div>
+
+    <img class="walletImg" src="images/WalletText.png" alt="Wallet"/>
+    <div id="displays">
+        <input type="text" id="walletDisplay" class="displays" value="$500" readonly>
+        <input type="text" id="betDisplay" class="displays" value="$0" readonly>
+    </div>
+
+    <div id="displays2">
+        <input type="text" id="consoleDisplay" class="displays" value="Hit stand to begin." readonly>
+    </div>
+
+    <div id="inputButtons">
+        <button id="betOne" class="betButton" onclick="javascript:addBet1();">+1</button>
+        <button id="betTen" class="betButton" onclick="javascript:addBet10();">+10</button>
+        <button id="betTwentyFive" class="betButton" onclick="javascript:addBet25();">+25</button>
+        <button id="betFifty" class="betButton" onclick="javascript:addBet50();">+50</button>
+        <button id="betOneHundred" class="betButton" onclick="javascript:addBet100();">+100</button>
+    </div>
+
+    <div id="actionButtonsDiv">
+        <button id="hit" class="actionButtons" onclick="javascript:hit();">Hit</button>
+        <button id="stand" class="actionButtons" onclick="javascript:stand();">Stand</button>
+        <button id="doubleDown" class="actionButtons" onclick="javascript:doubleDown();">Double Down</button>
+    </div>
+
+</body>
